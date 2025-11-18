@@ -4,8 +4,24 @@
 훈련된 모델 성능을 평가하며, 단일 이미지에 대한 추론 결과를 생성하는 시스템입니다.
 
 ---
+시스템 구성
+
+[Edge Cameras + Edge Devices]
+    │ (YOLO detection → metadata)
+    ▼
+[Message Bus / Ingress (MQTT/HTTPS)]
+    │
+    ▼
+[Central Triangulation & Fusion Service] ──▶ [Map DB / Event DB]
+    │                                         │
+    │                                         ▼
+    ├─▶ [Alerting Service] ──▶ SMS/Push/전화/자동발신
+    ├─▶ [Dispatch Orchestrator] ──▶ 구조대 API / 드론 시스템
+    └─▶ [Situation Room UI] (웹/모바일)
+
 
 # 📁 Project Structure
+
 csc/
 ├── dataset/
 │ ├── README.dataset.txt
